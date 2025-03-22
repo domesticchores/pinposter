@@ -1,28 +1,24 @@
-.map {
-    background-color: gainsboro;
-    width: 80vw;
-    height: 80vh;
-    margin-left: 10%;
-    overflow: hidden;
+.draggable-container {
+  position: absolute;
+  width: 50vw;
+  height: 60vh;
+  background-color: lightblue;
+  border: 1px solid #ccc;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none; /* Prevent text selection while dragging */
+}
+.draggable-container:active {
+  cursor: grabbing;
 }
 
-.map-wrapper {
-    margin-left: -30vw;
-    margin-top: -30vh;
-    width: 140vw;
-    height: 140vh;
-    overflow: hidden;
-    position: relative; /* Required for cdkDragBoundary to work correctly */
-  }
-  
-  .map-container {
-    width: 80vw;
-    height: 80vh;
-    background-color: lightgray;
-    cursor: grab;
-    position: absolute;
-  }
-  
-  .map-container:active {
-    cursor: grabbing;
-  }
+.constraint-container {
+  position: relative;
+  width: 70vw;
+  height: 80vh;
+  border: 1px solid black;
+  overflow: hidden;
+  margin: 20px 15vw;
+}

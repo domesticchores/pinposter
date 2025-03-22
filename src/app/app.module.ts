@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ZoomDirective } from './zoom.directive';
+import { NgStyle } from '@angular/common';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { preventZoom } from './preventzoom.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
+    ScheduleComponent,
+    preventZoom,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    ZoomDirective
+    ZoomDirective,
+    NgStyle
   ],
   providers: [],
   bootstrap: [AppComponent]

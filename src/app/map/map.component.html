@@ -1,15 +1,11 @@
 <p>map works!</p>
-<div class="map" >
-    <div class="map-wrapper" appScrollTrap>
-        <div 
-            class="map-container"
-            appZoom
-            cdkDrag [cdkDragBoundary]="'.map-wrapper'" 
-            [cdkDragFreeDragPosition]="{x:30*vw,y:30*vh}"
-            >
-            <p>Drag me around!</p>
-        </div>
-    </div>
-</div>
-<div style="display: flex;">
+<div class="constraint-container" preventZoom>
+    <div
+    class="draggable-container"
+    zoomDirective
+    (mousedown)="onDragStart($event)"
+    (mousemove)="onDrag($event)"
+    (mouseup)="onDragEnd()"
+    [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }"
+    >Map goes here</div>
 </div>

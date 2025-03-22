@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Host, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appZoom]'
+  selector: '[zoomDirective]'
 })
 
 
@@ -42,13 +42,13 @@ export class ZoomDirective {
 
     if (event.deltaY > 0) {
         console.log("SMALL");
-        this.scale-=0.01;
+        this.scale-=0.1;
         if(this.scale<1) {
             this.scale=1;
         }
     } else {
         console.log("BIG");
-        this.scale+=0.01;
+        this.scale+=0.1;
         if(this.scale>2) {
             this.scale=2;
         }
@@ -57,14 +57,14 @@ export class ZoomDirective {
   }
   
   private updateZoom() {
-    let styles = window.getComputedStyle(this.el.nativeElement);
-    let transform = styles.transform;
-    let arr = transform.match(/matrix.*\((.+)\)/)?.[1].split(', ');
-    let tx = arr![4] || 0;
-    let ty = arr![5] || 0;
+    // let styles = window.getComputedStyle(this.el.nativeElement);
+    // let transform = styles.transform;
+    // let arr = transform.match(/matrix.*\((.+)\)/)?.[1].split(', ');
+    // let tx = arr![4] || 0;
+    // let ty = arr![5] || 0;
 
-    console.log("scale: ", tx, ty, this.scale)
-    this.renderer.setStyle(this.el.nativeElement, 'transform', `translate3d(${tx}px,${ty}px,0px) scale(${this.scale})`);
+    // console.log("scale: ", tx, ty, this.scale)
+    this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform', `translate(${tx}px ${ty}px) scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform-origin', 'top left');
     this.renderer.setStyle(this.el.nativeElement, 'transition', 'transform 0.1s ease'); // Smooth transition
