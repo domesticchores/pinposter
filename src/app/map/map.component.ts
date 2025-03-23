@@ -1,15 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import * as data from '../../../assets/buildings.json'
 
+
+interface Building {
+  id: number,
+  name: string,
+  shape: string,
+  position:{posX:number,posY:number},
+  posters:number[]
+}
+// {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
 @Component({
   selector: 'app-map',
   standalone: false,
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })
-export class MapComponent {
+
+export class MapComponent implements OnInit {
+  rawData: any
+  buildingData: Building[] = []
+  b: Building = {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
+
+  constructor() {}
+
   position = { x: 0, y: 0 }; // Initial position
   isDragging = false; // Dragging state
   offset = { x: 0, y: 0 }; // Offset to handle smooth dragging
+
+  ngOnInit() {
+    this.rawData = data;
+    this.buildingData = this.rawData.default;
+    this.buildingData.forEach(element => {
+      console.log(element.name);
+    });
+  }
 
   onDragStart(event: MouseEvent): void {
     this.isDragging = true;
