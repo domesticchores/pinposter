@@ -12,8 +12,9 @@ export class ZoomDirective {
     private ty: number = 0;
     private element: ElementRef;
 
-    private maxZoom: number = 2;
+    private maxZoom: number = 5;
     private minZoom: number = 0.75;
+    private zoomFactor: number = 0.1;
 
     constructor(
         private el: ElementRef, 
@@ -44,12 +45,12 @@ export class ZoomDirective {
     }
 
     if (event.deltaY > 0) {
-        this.scale-=0.1;
+        this.scale-=this.zoomFactor*this.scale;
         if(this.scale<this.minZoom) {
             this.scale=this.minZoom;
         }
     } else {
-        this.scale+=0.1;
+        this.scale+=this.zoomFactor*this.scale;
         if(this.scale>this.maxZoom) {
             this.scale=this.maxZoom;
         }
