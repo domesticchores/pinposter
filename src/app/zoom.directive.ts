@@ -13,6 +13,7 @@ export class ZoomDirective {
     private element: ElementRef;
 
     private maxZoom: number = 5;
+    private maxZoom: number = 5;
     private minZoom: number = 0.75;
     private zoomFactor: number = 0.1;
 
