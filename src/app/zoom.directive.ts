@@ -12,8 +12,11 @@ export class ZoomDirective {
     private ty: number = 0;
     private element: ElementRef;
 
-    private maxZoom: number = 2;
+    private maxZoom: number = 5;
     private minZoom: number = 0.75;
+    private zoomFactor: number = 0.1;
+
+    private isEnabled = true;
 
     constructor(
         private el: ElementRef, 
@@ -21,15 +24,10 @@ export class ZoomDirective {
     ) {
       this.element = el.nativeElement;
     }
-    
-    
-  @HostListener('drag',['$event'])
-  onDrag(event: DragEvent): void {
-    this.element.nativeElement;
-  }
 
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent): void {
+    if (!this.isEnabled) {return}
 
     const element = this.el.nativeElement;
 
@@ -44,12 +42,12 @@ export class ZoomDirective {
     }
 
     if (event.deltaY > 0) {
-        this.scale-=0.1;
+        this.scale-=this.zoomFactor*this.scale;
         if(this.scale<this.minZoom) {
             this.scale=this.minZoom;
         }
     } else {
-        this.scale+=0.1;
+        this.scale+=this.zoomFactor*this.scale;
         if(this.scale>this.maxZoom) {
             this.scale=this.maxZoom;
         }
@@ -70,4 +68,18 @@ export class ZoomDirective {
     //this.renderer.setStyle(this.el.nativeElement, 'transform-origin', 'top left');
     this.renderer.setStyle(this.el.nativeElement, 'transition', 'transform 0.1s ease'); // Smooth transition
   }
+
+  enableZoom() {
+    this.isEnabled = true;
+  }
+
+  disableZoom() {
+    this.isEnabled = false;
+  }
+
+  setZoom(amt: number) {
+    this.scale = amt;
+    this.updateZoom();
+  }
+
 }

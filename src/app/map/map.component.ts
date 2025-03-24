@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import * as data from '../../../assets/buildings.json'
+import { ZoomDirective } from '../zoom.directive'
 
 
 interface Building {
@@ -22,11 +23,14 @@ export class MapComponent implements OnInit {
   buildingData: Building[] = []
   b: Building = {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
 
-  constructor() {}
+  constructor(
+    // private zoomDirective: ZoomDirective
+  ) {}
 
   position = { x: 0, y: 0 }; // Initial position
   isDragging = false; // Dragging state
   offset = { x: 0, y: 0 }; // Offset to handle smooth dragging
+  oldPosition = { x: 0, y: 0 };
 
   ngOnInit() {
     this.rawData = data;
@@ -57,7 +61,9 @@ export class MapComponent implements OnInit {
     this.isDragging = false;
   }
   
-  printLocation() {
-    console.log('location');
+  select(building: Building) {
+    this.oldPosition = this.position;
+    // this.zoomDirective.setZoom(100);
+    console.log("selecting: ", building.name);
   }
 }
