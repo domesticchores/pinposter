@@ -8,6 +8,7 @@ interface Building {
   name: string,
   shape: string,
   position:{posX:number,posY:number},
+  floors: number,
   posters:number[]
 }
 // {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
