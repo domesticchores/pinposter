@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import * as data from '../../../assets/buildings.json'
 import { ZoomDirective } from '../zoom.directive'
 
@@ -19,6 +19,7 @@ interface Building {
 })
 
 export class MapComponent implements OnInit {
+  @ViewChild('zoomInstance') zoomDirective!: ZoomDirective;
   rawData: any
   buildingData: Building[] = []
   b: Building = {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
@@ -63,7 +64,7 @@ export class MapComponent implements OnInit {
   
   select(building: Building) {
     this.oldPosition = this.position;
-    // this.zoomDirective.setZoom(100);
+    this.zoomDirective.setZoom(10);
     console.log("selecting: ", building.name);
   }
 }

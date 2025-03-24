@@ -3,6 +3,7 @@
     <div
     class="draggable-container"
     zoomDirective
+    #zoomInstance="zoomDirective"
     (mousedown)="onDragStart($event)"
     (mousemove)="onDrag($event)"
     (mouseup)="onDragEnd()"
