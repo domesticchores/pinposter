@@ -6,6 +6,13 @@
     (mousedown)="onDragStart($event)"
     (mousemove)="onDrag($event)"
     (mouseup)="onDragEnd()"
-    [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }"
-    >Map goes here</div>
+    [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+            <path d="M1 1H8V9H5V6H1Z" stroke="#FF0000" stroke-width="0.1" fill="#000000" (click)="printLocation()"/>
+            
+            <a href="/2">
+                <path d="m11 1h7v8h-3v-3h-4z" stroke="#FF0000" stroke-width="0.1" fill="#000000"/>
+            </a>
+        </svg>
+    </div>
 </div>

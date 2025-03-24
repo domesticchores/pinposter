@@ -56,4 +56,8 @@ export class MapComponent implements OnInit {
   onDragEnd(): void {
     this.isDragging = false;
   }
+  
+  printLocation() {
+    console.log('location');
+  }
 }
