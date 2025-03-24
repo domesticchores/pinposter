@@ -7,12 +7,12 @@
     (mousemove)="onDrag($event)"
     (mouseup)="onDragEnd()"
     [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
-            <path d="M1 1H8V9H5V6H1Z" stroke="#FF0000" stroke-width="0.1" fill="#000000" (click)="printLocation()"/>
-            
-            <a href="/2">
-                <path d="m11 1h7v8h-3v-3h-4z" stroke="#FF0000" stroke-width="0.1" fill="#000000"/>
-            </a>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" style="position:absolute; z-index: 2; background-color:white; opacity:0.5;">
+            <path class="building-component" d="M1 1h 7v8h-3v-3h-4z" (click)="printLocation()"/>
+            <path class="building-component" d="m11 1h 7v3h-3v4h-4z" (click)="printLocation()"/>
+            <path class="building-component" d="m 707.01107,426.93727 h 39.8524 v 5.90406 h 12.17712 v 48.33948 h -50.92251 z" (click)="printLocation()"/>
+            <path class="building-component" d="m92 40h 8v2h4 1v5h-1v-4h-4v3h4v1h-4v2h-8z" (click)="printLocation()"/>
         </svg>
+        <img src="/croppedRitMap.png" alt="map background" style="user-select: none; pointer-events: none; z-index: 1;">
     </div>
 </div>

@@ -1,7 +1,5 @@
 .draggable-container {
   position: absolute;
-  width: 70vw;
-  height: 80vh;
   background-color: #c4c4c4;
   cursor: grab;
   display: flex;
@@ -21,4 +19,14 @@
   background-color: #afafaf;
   overflow: hidden;
   margin: 20px 15vw;
+}
+
+.building-component {
+  fill: black;
+  stroke-width: 0.1;
+  stroke: red;
+  z-index: 5;
+}
+.building-component:hover {
+  fill: yellowgreen;
 }
