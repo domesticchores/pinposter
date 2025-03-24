@@ -2,10 +2,10 @@
 <div class="constraint-container" preventZoom>
     <div
     class="draggable-container"
-    zoomDirective
     (mousedown)="onDragStart($event)"
     (mousemove)="onDrag($event)"
     (mouseup)="onDragEnd()"
+    (wheel)="onWheel($event)"
     [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" style="position:absolute; z-index: 2; background-color:white; opacity:0.5;">
             <path class="building-component" *ngFor="let building of this.buildingData" attr.d={{building.shape}} id={{building.name}} (click)="select(building)">

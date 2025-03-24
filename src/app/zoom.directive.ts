@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Host, HostListener, Input, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Host, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Directive({
   selector: '[zoomDirective]'
@@ -6,11 +6,11 @@ import { Directive, ElementRef, Host, HostListener, Input, Renderer2 } from '@an
 
 
 
-export class ZoomDirective {
+export class ZoomDirective implements AfterViewInit{
+  @ViewChild('mapMain', { static: false }) elementRef!: ElementRef;
     private scale: number = 1;
     private tx: number = 0;
     private ty: number = 0;
-    private element: ElementRef;
 
     private maxZoom: number = 5;
     private minZoom: number = 0.75;
@@ -21,9 +21,13 @@ export class ZoomDirective {
     constructor(
         private el: ElementRef, 
         private renderer: Renderer2,
-    ) {
-      this.element = el.nativeElement;
-    }
+    ) {}
+
+  ngAfterViewInit(): void {
+    console.log("map found: ", this.elementRef)
+    const htmlElement: HTMLElement = this.elementRef.nativeElement;
+    console.log("element itself" ), htmlElement
+  }
 
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent): void {
