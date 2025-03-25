@@ -1,7 +1,7 @@
 # PinPoster
 
 An application to track all active poster boards on RIT campus, with an interactive map and uptime menu. 
-This project uses [Angular CLI](https://github.com/angular/) 19.
+This project uses [Angular](https://github.com/angular/) 19.
 
 ## Heading
 
