@@ -30,3 +30,8 @@
 .building-component:hover {
   fill: yellowgreen;
 }
+
+.map-background {
+  width: 1200px;
+  height: 600px;
+}

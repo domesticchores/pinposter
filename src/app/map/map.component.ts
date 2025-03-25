@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import * as data from '../../../assets/buildings.json'
 import { ZoomDirective } from '../zoom.directive'
+import { timeout } from 'rxjs';
 
 
 interface Building {
@@ -64,15 +65,29 @@ export class MapComponent implements OnInit {
     this.isDragging = false;
   }
   
-  select(building: Building, event: Event) {
+  select(building: Building) {
     const mapWidth = document.getElementById("mapElement")?.getBoundingClientRect().width!;
     const mapHeight = document.getElementById("mapElement")?.getBoundingClientRect().height!;
     const elem: HTMLElement = document.getElementById(building.name)!;
+    let bounds = elem.getBoundingClientRect();
     this.oldPosition = this.position;
+    this.zoomDirective.setZoom(4);
+    bounds = elem.getBoundingClientRect();
+    console.log(bounds)
     this.position={
-      x: -((building.position.posX/1600)*1200 - (mapWidth/2)) - elem.getBoundingClientRect().width,
-      y: -((building.position.posY/800)*600 - (mapHeight/2)) - elem.getBoundingClientRect().height
+      x: -(bounds.width/2) + (mapWidth/2) - (building.position.posX/1600)*(1200*this.zoomDirective.getZoom()),
+      y: -(bounds.height/2) + (mapHeight/2) - (building.position.posY/800)*(600*this.zoomDirective.getZoom())
     };
-    console.log("selecting: ", building.name, " at position ", this.position, " at element: ", elem);
+
+
+    // this.position={
+    //   x: (-((building.position.posX/1600)*1200) - (bounds.width/2) + (mapWidth/2)),
+    //   y: (-((building.position.posY/800)*600 - (mapHeight/2)) - (bounds.height/2))
+    // };
+    bounds = elem.getBoundingClientRect();
+    console.log("change: ", elem.getBoundingClientRect().left)
+    // bounds = elem.getBoundingClientRect();
+    // console.log("bounds after scale: ", bounds)
+    // console.log("selecting: ", building.name, " at position ", this.position, " at element: ", elem);
   }
 }

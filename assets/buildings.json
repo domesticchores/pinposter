@@ -26,5 +26,12 @@
         "shape":"m500,0h 39.8524 v 5.90406 h 12.17712 v 48.33948 h -50.92251 z",
         "position":{"posX":500,"posY":0},
         "posters":[]
+    },
+    {
+        "id":3,
+        "name":"Evil Wallace 3",
+        "shape":"m500,500h 39.8524 v 5.90406 h 12.17712 v 48.33948 h -50.92251 z",
+        "position":{"posX":500,"posY":500},
+        "posters":[]
     }
 ]
