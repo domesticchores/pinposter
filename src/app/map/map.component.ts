@@ -20,6 +20,7 @@ interface Building {
 
 export class MapComponent implements OnInit {
   @ViewChild('zoomInstance') zoomDirective!: ZoomDirective;
+  @ViewChild('mapElement') mapElement!: HTMLElement;
   rawData: any
   buildingData: Building[] = []
   b: Building = {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
@@ -55,6 +56,7 @@ export class MapComponent implements OnInit {
         x: event.clientX - this.offset.x,
         y: event.clientY - this.offset.y,
       };
+      console.log(this.position);
     }
   }
 
@@ -62,9 +64,15 @@ export class MapComponent implements OnInit {
     this.isDragging = false;
   }
   
-  select(building: Building) {
+  select(building: Building, event: Event) {
+    const mapWidth = document.getElementById("mapElement")?.getBoundingClientRect().width!;
+    const mapHeight = document.getElementById("mapElement")?.getBoundingClientRect().height!;
+    const elem: HTMLElement = document.getElementById(building.name)!;
     this.oldPosition = this.position;
-    this.zoomDirective.setZoom(10);
-    console.log("selecting: ", building.name);
+    this.position={
+      x: -((building.position.posX/1600)*1200 - (mapWidth/2)) - elem.getBoundingClientRect().width,
+      y: -((building.position.posY/800)*600 - (mapHeight/2)) - elem.getBoundingClientRect().height
+    };
+    console.log("selecting: ", building.name, " at position ", this.position, " at element: ", elem);
   }
 }

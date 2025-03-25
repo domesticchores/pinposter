@@ -1,15 +1,16 @@
 <p>map works!</p>
-<div class="constraint-container" preventZoom>
+<div id="mapElement" class="constraint-container" preventZoom>
     <div
     class="draggable-container"
     zoomDirective
+    #mapElement
     #zoomInstance="zoomDirective"
     (mousedown)="onDragStart($event)"
     (mousemove)="onDrag($event)"
     (mouseup)="onDragEnd()"
     [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" style="position:absolute; z-index: 2; background-color:white; opacity:0.5;">
-            <path class="building-component" *ngFor="let building of this.buildingData" attr.d={{building.shape}} id={{building.name}} (click)="select(building)">
+            <path class="building-component" *ngFor="let building of this.buildingData" attr.d={{building.shape}} id={{building.name}} (click)="select(building, $event)">
                 <!-- poster objects go here, *ngFor="let poster of this.getPosters()" or something -->
             </path>
 
