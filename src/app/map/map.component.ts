@@ -7,6 +7,7 @@ import { timeout } from 'rxjs';
 interface Building {
   id: number,
   name: string,
+  description: string,
   shape: string,
   position:{posX:number,posY:number},
   posters:number[]
@@ -24,7 +25,9 @@ export class MapComponent implements OnInit {
   @ViewChild('mapElement') mapElement!: HTMLElement;
   rawData: any
   buildingData: Building[] = []
-  b: Building = {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
+  b: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
+  buildingName: string = "BUILDING";
+  buildingDescription: string = "DESCRIPTION";
 
   constructor(
     // private zoomDirective: ZoomDirective
@@ -65,36 +68,37 @@ export class MapComponent implements OnInit {
     this.isDragging = false;
   }
   
-  select(building: Building) {
-    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 55%;")
+  select(building: Building, scale: number) {
+    this.openMenu(building);
     const mapWidth = document.getElementById("mapElement")?.getBoundingClientRect().width!;
     const mapHeight = document.getElementById("mapElement")?.getBoundingClientRect().height!;
     const elem: HTMLElement = document.getElementById(building.name)!;
     this.oldPosition = this.position;
 
+    // offsets:
     //x: 231.03334045410156
     //y: 121.10000610351562
 
-    // this.zoomDirective.setZoom(1);
-    // this.position={x:0,y:0};
-    // var unitScaleBounds = elem.getBoundingClientRect();
-    // unitScaleBounds.y/=(0.75)
-    // var adjustedBounds = {x:(231.03334045410156-unitScaleBounds.x)/(0.75),y:(121.10000610351562-unitScaleBounds.y)/(0.75)};
-
-    this.zoomDirective.setZoom(5);
+    this.zoomDirective.setZoom(scale);
     var bounds = elem.getBoundingClientRect();
     console.log(" object position: ", bounds.x + " " + bounds.y)
     this.position={
       x: -(bounds.width/2) + (mapWidth/2) - (building.position.posX/1600)*(1200*this.zoomDirective.getZoom()),
       y: -(bounds.height/2) + (mapHeight/2) - (building.position.posY/800)*(600*this.zoomDirective.getZoom())
     };
+  }
 
-    // this.position={
-    //   x: (-((building.position.posX/1600)*1200) - (bounds.width/2) + (mapWidth/2)),
-    //   y: (-((building.position.posY/800)*600 - (mapHeight/2)) - (bounds.height/2))
-    // };
-    // bounds = elem.getBoundingClientRect();
-    // console.log("bounds after scale: ", bounds)
-    // console.log("selecting: ", building.name, " at position ", this.position, " at element: ", elem);
+  openMenu(building: Building) {
+    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 60%;")
+    document.getElementById("information-container")?.setAttribute("style","width:40%;")
+    this.buildingName = building.name;
+    this.buildingDescription = building.description;
+  }
+
+  closeMenu() {
+    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 100%;")
+    document.getElementById("information-container")?.setAttribute("style","display: none;")
+    this.zoomDirective.setZoom(1);
+    this.position=this.oldPosition;
   }
 }

@@ -42,11 +42,21 @@
   background-color: #afafaf;
   overflow: hidden;
   margin: 20px 15vw;
+  transition: transform 0.1s ease;
 }
 
-.information-container {
-  right: 0;
-  top: 0;
+#information-container {
+  float: right;
+  position: relative;
   background-color: #5a5a5a;
   height: 100%;
+  width: 0;
+  padding: 10px;
+}
+
+#info-close-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 5px;
 }
