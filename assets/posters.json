@@ -1,3 +1,8 @@
 [
-    {"id":0,"floor":0,"position":{"posX":0,"posY":0}}
+    {
+        "id":0,
+        "floor":1,
+        "position":{"posX":0,"posY":0},
+        "globalPosition":{"globalX":0,"globalY":0}
+    }
 ]

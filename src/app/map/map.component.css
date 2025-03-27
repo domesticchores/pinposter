@@ -1,14 +1,10 @@
 .draggable-container {
   position: absolute;
   background-color: #c4c4c4;
-  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none; /* Prevent text selection while dragging */
-}
-.draggable-container:active {
-  cursor: grabbing;
 }
 
 .constraint-container {
@@ -43,6 +39,11 @@
   overflow: hidden;
   margin: 20px 15vw;
   transition: transform 0.1s ease;
+  cursor: grab;
+}
+
+.main-container:active {
+  cursor: grabbing;
 }
 
 #information-container {
@@ -59,4 +60,14 @@
   right: 10px;
   top: 10px;
   padding: 5px;
+}
+
+#info-floor-selector {
+  display: flex;
+  column-gap: 10px;
+}
+
+#info-floor-selector button {
+  width: 10%;
+  aspect-ratio: 1/1;
 }

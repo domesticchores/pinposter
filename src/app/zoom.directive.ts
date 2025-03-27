@@ -53,19 +53,12 @@ export class ZoomDirective {
             this.scale=this.maxZoom;
         }
     }
+    this.renderer.setStyle(this.el.nativeElement, 'transform-origin', "center center");
     this.updateZoom();
   }
   
   private updateZoom() {
     console.log("changed scale to: ", this.scale)
-    // let styles = window.getComputedStyle(this.el.nativeElement);
-    // let transform = styles.transform;
-    // let arr = transform.match(/matrix.*\((.+)\)/)?.[1].split(', ');
-    // let tx = arr![4] || 0;
-    // let ty = arr![5] || 0;
-
-    // console.log("scale: ", tx, ty, this.scale)
-    this.renderer.setStyle(this.el.nativeElement, 'transform-origin', "top left");
     this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform', `translate(${tx}px ${ty}px) scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform-origin', 'top left');
@@ -82,6 +75,7 @@ export class ZoomDirective {
 
   setZoom(amt: number) {
     this.scale = amt;
+    this.renderer.setStyle(this.el.nativeElement, 'transform-origin', "top left");
     this.updateZoom();
   }
 

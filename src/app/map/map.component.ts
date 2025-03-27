@@ -9,8 +9,9 @@ interface Building {
   name: string,
   description: string,
   shape: string,
-  position:{posX:number,posY:number},
-  posters:number[]
+  position: {posX:number,posY:number},
+  floors: number,
+  posters: number[]
 }
 // {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
 @Component({
@@ -25,9 +26,10 @@ export class MapComponent implements OnInit {
   @ViewChild('mapElement') mapElement!: HTMLElement;
   rawData: any
   buildingData: Building[] = []
-  b: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
+  b: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
   buildingName: string = "BUILDING";
   buildingDescription: string = "DESCRIPTION";
+  resetZoom: boolean = true;
 
   constructor(
     // private zoomDirective: ZoomDirective
@@ -73,7 +75,10 @@ export class MapComponent implements OnInit {
     const mapWidth = document.getElementById("mapElement")?.getBoundingClientRect().width!;
     const mapHeight = document.getElementById("mapElement")?.getBoundingClientRect().height!;
     const elem: HTMLElement = document.getElementById(building.name)!;
-    this.oldPosition = this.position;
+    if(this.resetZoom) {
+      this.oldPosition = this.position;
+    }
+    this.resetZoom = false;
 
     // offsets:
     //x: 231.03334045410156
@@ -93,12 +98,26 @@ export class MapComponent implements OnInit {
     document.getElementById("information-container")?.setAttribute("style","width:40%;")
     this.buildingName = building.name;
     this.buildingDescription = building.description;
+    this.selectFloor(-1);
   }
 
   closeMenu() {
-    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 100%;")
-    document.getElementById("information-container")?.setAttribute("style","display: none;")
+    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 100%;");
+    document.getElementById("information-container")?.setAttribute("style","display: none;");
     this.zoomDirective.setZoom(1);
     this.position=this.oldPosition;
+    this.resetZoom = true;
+  }
+
+  selectFloor(floorNum: number) {
+    let buttonNodes: NodeList = document.getElementById("info-floor-selector")?.childNodes!;
+    buttonNodes.forEach(b => {
+      let button: Element = <Element>b;
+      if(button.textContent === ''+floorNum) {
+        button.setAttribute("style","background-color: red;");
+      } else {
+        button.setAttribute("style","");
+      }
+    });
   }
 }
