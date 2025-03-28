@@ -26,10 +26,12 @@ export class MapComponent implements OnInit {
   @ViewChild('mapElement') mapElement!: HTMLElement;
   rawData: any
   buildingData: Building[] = []
-  b: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
-  buildingName: string = "BUILDING";
-  buildingDescription: string = "DESCRIPTION";
   resetZoom: boolean = true;
+  floorArr: number[] = Array(5).fill(1).map((x,i)=>i+1);
+
+  // current selection with defaults
+  building: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
+  floor: number = 1;
 
   constructor(
     // private zoomDirective: ZoomDirective
@@ -96,9 +98,15 @@ export class MapComponent implements OnInit {
   openMenu(building: Building) {
     document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 60%;")
     document.getElementById("information-container")?.setAttribute("style","width:40%;")
-    this.buildingName = building.name;
-    this.buildingDescription = building.description;
-    this.selectFloor(-1);
+    this.zoomDirective.disableZoom();
+    this.building = building;
+    this.floorArr = Array(building.floors).fill(1).map((x,i)=>i+1);
+    if (this.floor in this.floorArr) {
+      this.selectFloor(this.floor);
+    } else {
+      this.floor = 1;
+      this.selectFloor(1);
+    }
   }
 
   closeMenu() {
@@ -107,16 +115,22 @@ export class MapComponent implements OnInit {
     this.zoomDirective.setZoom(1);
     this.position=this.oldPosition;
     this.resetZoom = true;
+    this.zoomDirective.enableZoom();
   }
 
   selectFloor(floorNum: number) {
+    this.floor = floorNum;
     let buttonNodes: NodeList = document.getElementById("info-floor-selector")?.childNodes!;
+    console.log("selected floor: ", floorNum);
     buttonNodes.forEach(b => {
       let button: Element = <Element>b;
+      if(!(button instanceof HTMLButtonElement)) return
       if(button.textContent === ''+floorNum) {
-        button.setAttribute("style","background-color: red;");
+        button.classList.add("selected-button");
+        button.classList.remove("unselected-button");
       } else {
-        button.setAttribute("style","");
+        button.classList.remove("selected-button");
+        button.classList.add("unselected-button");
       }
     });
   }
