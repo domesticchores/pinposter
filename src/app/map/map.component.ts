@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
-import * as data from '../../../assets/buildings.json'
+import * as dataB from '../../../assets/buildings.json'
+import * as dataP from '../../../assets/posters.json'
 import { ZoomDirective } from '../zoom.directive'
 import { timeout } from 'rxjs';
 
@@ -13,6 +14,14 @@ interface Building {
   floors: number,
   posters: number[]
 }
+
+interface Poster {
+  id: number,
+  floor: number,
+  position:{posX:number,posY:number},
+  globalPosition:{posX:number,posY:number}
+}
+
 // {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
 @Component({
   selector: 'app-map',
@@ -24,10 +33,11 @@ interface Building {
 export class MapComponent implements OnInit {
   @ViewChild('zoomInstance') zoomDirective!: ZoomDirective;
   @ViewChild('mapElement') mapElement!: HTMLElement;
-  rawData: any
-  buildingData: Building[] = []
+  buildingData: Building[] = [];
+  posterData: Poster[] = []; // {[id:number] : Poster} = {};
   resetZoom: boolean = true;
-  floorArr: number[] = Array(5).fill(1).map((x,i)=>i+1);
+  floorNumArr: number[] = Array(5).fill(1).map((x,i)=>i+1);
+  posterArr: number[] = [];
 
   // current selection with defaults
   building: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
@@ -43,10 +53,15 @@ export class MapComponent implements OnInit {
   oldPosition = { x: 0, y: 0 };
 
   ngOnInit() {
-    this.rawData = data;
-    this.buildingData = this.rawData.default;
+    let rawData: any = dataB;
+    this.buildingData = rawData.default;
     this.buildingData.forEach(element => {
       console.log(element.name);
+    });
+    rawData = dataP;
+    this.posterData = rawData.default;
+    this.posterData.forEach(element => {
+      console.log("poster " + element.id + " loaded");
     });
   }
 
@@ -100,8 +115,8 @@ export class MapComponent implements OnInit {
     document.getElementById("information-container")?.setAttribute("style","width:40%;")
     this.zoomDirective.disableZoom();
     this.building = building;
-    this.floorArr = Array(building.floors).fill(1).map((x,i)=>i+1);
-    if (this.floor in this.floorArr) {
+    this.floorNumArr = Array(building.floors).fill(1).map((x,i)=>i+1);
+    if (this.floor in this.floorNumArr) {
       this.selectFloor(this.floor);
     } else {
       this.floor = 1;
@@ -133,5 +148,13 @@ export class MapComponent implements OnInit {
         button.classList.add("unselected-button");
       }
     });
+
+    this.posterArr = [];
+    this.posterData.forEach(poster => {
+      if(poster.floor == floorNum) {
+        this.posterArr.push(poster.id)
+      }
+    });
+    
   }
 }

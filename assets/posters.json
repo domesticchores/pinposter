@@ -3,6 +3,18 @@
         "id":0,
         "floor":1,
         "position":{"posX":0,"posY":0},
-        "globalPosition":{"globalX":0,"globalY":0}
+        "globalPosition":{"posX":0,"posY":0}
+    },
+    {
+        "id":1,
+        "floor":1,
+        "position":{"posX":10,"posY":10},
+        "globalPosition":{"posX":0,"posY":0}
+    },
+    {
+        "id":2,
+        "floor":2,
+        "position":{"posX":10,"posY":0},
+        "globalPosition":{"posX":0,"posY":0}
     }
 ]

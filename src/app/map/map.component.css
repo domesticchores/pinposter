@@ -23,6 +23,7 @@
 }
 .building-component:hover {
   fill: yellowgreen;
+  cursor: pointer;
 }
 
 .map-background {
@@ -53,6 +54,7 @@
   height: 100%;
   width: 0;
   padding: 10px;
+  cursor: default;
 }
 
 #info-close-button {
@@ -80,4 +82,19 @@
 .selected-button {
   border-radius: 5px;
   background-color: #ebebeb;
+}
+
+.poster-list {
+  padding: 0;
+  width: 100%;
+}
+
+.poster-list li {
+  list-style: none;
+  background-color: #8d8d8d;
+  margin: 4px 0;
+  padding: 10px;
+}
+.poster-list li:nth-child(odd) {
+  background-color: #4d4d4d;
 }

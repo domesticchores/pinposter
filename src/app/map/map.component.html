@@ -27,13 +27,18 @@
     </div>
     <div id="information-container" style="display: none;">
         <button id="info-close-button" (click)="closeMenu()">Close Menu</button>
-        <h3 id="info-name">{{building.name}}</h3>
+        <h2 id="info-name">{{building.name}}</h2>
         <p>{{building.description}}</p>
         <hr>
         <p>Select Floor: </p>
         <div id="info-floor-selector">
             <!-- <button (click)="selectFloor(0)"><p>A</p></button> -->
-            <button class="unselected-button" *ngFor="let num of floorArr" (click)="selectFloor(num)">{{num}}</button>
+            <button class="unselected-button" *ngFor="let num of floorNumArr" (click)="selectFloor(num)">{{num}}</button>
         </div>
+        <hr>
+        <h3 style="margin: 10px">Posters Here:</h3>
+        <ul class="poster-list">
+            <li *ngFor="let poster of posterArr">Poster #{{poster}}</li>
+        </ul>
     </div>
 </div>
