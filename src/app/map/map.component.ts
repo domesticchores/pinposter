@@ -37,7 +37,7 @@ export class MapComponent implements OnInit {
   posterData: Poster[] = []; // {[id:number] : Poster} = {};
   resetZoom: boolean = true;
   floorNumArr: number[] = Array(5).fill(1).map((x,i)=>i+1);
-  posterArr: number[] = [];
+  posterArr: Poster[] = [];
 
   // current selection with defaults
   building: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
@@ -115,7 +115,9 @@ export class MapComponent implements OnInit {
     document.getElementById("information-container")?.setAttribute("style","width:40%;")
     this.zoomDirective.disableZoom();
     this.building = building;
+    // set the number of buttons to the number of floors in building
     this.floorNumArr = Array(building.floors).fill(1).map((x,i)=>i+1);
+    // checks to see if the next building has the same amount of floors as the last one, otherwise sets floor to 1
     if (this.floor in this.floorNumArr) {
       this.selectFloor(this.floor);
     } else {
@@ -137,6 +139,7 @@ export class MapComponent implements OnInit {
     this.floor = floorNum;
     let buttonNodes: NodeList = document.getElementById("info-floor-selector")?.childNodes!;
     console.log("selected floor: ", floorNum);
+    // set buttons styling for selected floor
     buttonNodes.forEach(b => {
       let button: Element = <Element>b;
       if(!(button instanceof HTMLButtonElement)) return
@@ -149,10 +152,13 @@ export class MapComponent implements OnInit {
       }
     });
 
+    // reset poster array
     this.posterArr = [];
+    // add poster to floor selection if its the right floor and right building
     this.posterData.forEach(poster => {
-      if(poster.floor == floorNum) {
-        this.posterArr.push(poster.id)
+      if(poster.floor == floorNum && this.building.posters.includes(poster.id)) {
+        poster.globalPosition={posX:poster.position.posX+this.building.position.posX,posY:poster.position.posY+this.building.position.posY}
+        this.posterArr.push(poster)
       }
     });
     
