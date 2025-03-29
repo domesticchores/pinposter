@@ -89,9 +89,19 @@ export class MapComponent implements OnInit {
   
   select(building: Building, scale: number) {
     this.openMenu(building);
+    const elem: HTMLElement = document.getElementById(building.name)!;
+    this.center(building.position, building.name, scale);
+
+  }
+
+  selectPoster(poster: Poster, scale: number) {
+    // some sort of selection
+    this.center(poster.globalPosition, "poster#"+poster.id, scale);
+  }
+
+  center(position: {posX:number,posY:number}, id:string, scale: number) {
     const mapWidth = document.getElementById("mapElement")?.getBoundingClientRect().width!;
     const mapHeight = document.getElementById("mapElement")?.getBoundingClientRect().height!;
-    const elem: HTMLElement = document.getElementById(building.name)!;
     if(this.resetZoom) {
       this.oldPosition = this.position;
     }
@@ -102,11 +112,11 @@ export class MapComponent implements OnInit {
     //y: 121.10000610351562
 
     this.zoomDirective.setZoom(scale);
-    var bounds = elem.getBoundingClientRect();
+    let bounds = document.getElementById(id)!.getBoundingClientRect();
     console.log(" object position: ", bounds.x + " " + bounds.y)
     this.position={
-      x: -(bounds.width/2) + (mapWidth/2) - (building.position.posX/1600)*(1200*this.zoomDirective.getZoom()),
-      y: -(bounds.height/2) + (mapHeight/2) - (building.position.posY/800)*(600*this.zoomDirective.getZoom())
+      x: -(bounds.width/2) + (mapWidth/2) - (position.posX/1600)*(1200*this.zoomDirective.getZoom()),
+      y: -(bounds.height/2) + (mapHeight/2) - (position.posY/800)*(600*this.zoomDirective.getZoom())
     };
   }
 
@@ -157,7 +167,7 @@ export class MapComponent implements OnInit {
     // add poster to floor selection if its the right floor and right building
     this.posterData.forEach(poster => {
       if(poster.floor == floorNum && this.building.posters.includes(poster.id)) {
-        poster.globalPosition={posX:poster.position.posX+this.building.position.posX,posY:poster.position.posY+this.building.position.posY}
+        poster.globalPosition={posX:poster.position.posX+this.building.position.posX,posY:poster.position.posY+this.building.position.posY-11.5}
         this.posterArr.push(poster)
       }
     });

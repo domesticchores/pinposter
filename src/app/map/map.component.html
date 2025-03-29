@@ -12,20 +12,21 @@
         #mapElement
         #zoomInstance="zoomDirective"
         [ngStyle]="{ top: position.y + 'px', left: position.x + 'px' }">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" style="position:absolute; z-index: 2; background-color:white; opacity:0.5;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" style="position:absolute; z-index: 2;">
                 <path class="building-component" *ngFor="let building of this.buildingData" attr.d={{building.shape}} id={{building.name}} (click)="select(building,5)">
                     <!-- poster objects go here, *ngFor="let poster of this.getPosters()" or something -->
                 </path>
 
-                <path *ngFor="let poster of posterArr" id="poster#{{poster.id}}" attr.d="m {{poster.globalPosition.posX}},{{poster.globalPosition.posY-11.5}} a 3.8154277,4.0266488 0 0 0 -3.81608,4.02735 3.8154277,4.0266488 0 0 0 1.65195,3.30599 l 2.19126,4.33166 2.2269,-4.40145 a 3.8154277,4.0266488 0 0 0 1.54849,-3.06258 l 0.0188,-0.0358 h -0.016 a 3.8154277,4.0266488 0 0 0 0.008,-0.138 3.8154277,4.0266488 0 0 0 -3.81438,-4.02733 z" 
-                fill="#ff0000"></path>
+                <path class="poster-pin" *ngFor="let poster of posterArr" id="poster#{{poster.id}}" (click)="selectPoster(poster,10)" 
+                attr.d="m {{poster.globalPosition.posX}},{{poster.globalPosition.posY}} a 3.8154277,4.0266488 0 0 0 -3.81608,4.02735 3.8154277,4.0266488 0 0 0 1.65195,3.30599 l 2.19126,4.33166 2.2269,-4.40145 a 3.8154277,4.0266488 0 0 0 1.54849,-3.06258 l 0.0188,-0.0358 h -0.016 a 3.8154277,4.0266488 0 0 0 0.008,-0.138 3.8154277,4.0266488 0 0 0 -3.81438,-4.02733 z" 
+                ></path>
     
                 <!-- <path class="building-component" d="m11 1h 7v3h-3v4h-4z" (click)="printLocation()"/>
                 <path class="building-component" d="m 707.01107,426.93727 h 39.8524 v 5.90406 h 12.17712 v 48.33948 h -50.92251 z" (click)="printLocation()"/>
                 <path class="building-component" d="m92 40h 8v2h4 1v5h-1v-4h-4v3h4v1h-4v2h-8z" (click)="printLocation()"/>
                 <path class="building-component" d="" (click)="printLocation()"/> -->
             </svg>
-            <img class="map-background" src="/croppedRitMap.png" alt="map background" style="user-select: none; pointer-events: none; z-index: 1;">
+            <img class="map-background" src="/croppedRitMap.png" alt="map background" style="user-select: none; pointer-events: none; z-index: 1; opacity: 0.5; background-color: white;">
         </div>
     </div>
     <div id="information-container" style="display: none;">

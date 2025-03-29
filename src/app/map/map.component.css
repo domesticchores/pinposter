@@ -17,6 +17,7 @@
 
 .building-component {
   fill: black;
+  opacity: 0.5;
   stroke-width: 0.1;
   stroke: red;
   z-index: 5;
@@ -97,4 +98,14 @@
 }
 .poster-list li:nth-child(odd) {
   background-color: #4d4d4d;
+}
+
+.poster-pin {
+  fill: #ff0000;
+}
+
+.poster-pin:hover {
+  fill: #63ff21;
+  stroke-width: 0.1;
+  stroke: #ffffff;
 }
