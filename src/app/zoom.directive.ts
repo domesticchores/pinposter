@@ -58,7 +58,7 @@ export class ZoomDirective {
   }
   
   private updateZoom() {
-    console.log("changed scale to: ", this.scale)
+    console.log("changed scale to: ", this.scale);
     this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform', `translate(${tx}px ${ty}px) scale(${this.scale})`);
     //this.renderer.setStyle(this.el.nativeElement, 'transform-origin', 'top left');

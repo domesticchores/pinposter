@@ -2,25 +2,15 @@
     {
         "id":0,
         "floor":1,
-        "position":{"posX":0,"posY":0},
-        "globalPosition":{"posX":0,"posY":0}
+        "description":"",
+        "location":"WAL", 
+        "position":{"posX":728.882,"posY":427.436}
     },
     {
-        "id":1,
+        "id":7718,
         "floor":1,
-        "position":{"posX":10,"posY":10},
-        "globalPosition":{"posX":0,"posY":0}
-    },
-    {
-        "id":2,
-        "floor":2,
-        "position":{"posX":10,"posY":0},
-        "globalPosition":{"posX":0,"posY":0}
-    },
-    {
-        "id":3,
-        "floor":2,
-        "position":{"posX":35,"posY":15},
-        "globalPosition":{"posX":0,"posY":0}
+        "description":"Study nook in west Gosnell",
+        "location":"GOS",
+        "position":{"posX":634.221,"posY":496.735}
     }
 ]

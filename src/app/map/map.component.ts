@@ -6,7 +6,7 @@ import { timeout } from 'rxjs';
 
 
 interface Building {
-  id: number,
+  id: string,
   name: string,
   description: string,
   shape: string,
@@ -18,8 +18,9 @@ interface Building {
 interface Poster {
   id: number,
   floor: number,
-  position:{posX:number,posY:number},
-  globalPosition:{posX:number,posY:number}
+  description: string,
+  location: string,
+  position:{posX:number,posY:number}
 }
 
 // {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
@@ -40,7 +41,7 @@ export class MapComponent implements OnInit {
   posterArr: Poster[] = [];
 
   // current selection with defaults
-  building: Building = {"id":0,"name":"shed","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
+  building: Building = {"id":"TST","name":"test","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
   floor: number = 1;
 
   constructor(
@@ -61,6 +62,7 @@ export class MapComponent implements OnInit {
     rawData = dataP;
     this.posterData = rawData.default;
     this.posterData.forEach(element => {
+      element.position.posX+=4;
       console.log("poster " + element.id + " loaded");
     });
   }
@@ -96,7 +98,7 @@ export class MapComponent implements OnInit {
 
   selectPoster(poster: Poster, scale: number) {
     // some sort of selection
-    this.center(poster.globalPosition, "poster#"+poster.id, scale);
+    this.center(poster.position, "poster#"+poster.id, scale);
   }
 
   center(position: {posX:number,posY:number}, id:string, scale: number) {
@@ -166,8 +168,7 @@ export class MapComponent implements OnInit {
     this.posterArr = [];
     // add poster to floor selection if its the right floor and right building
     this.posterData.forEach(poster => {
-      if(poster.floor == floorNum && this.building.posters.includes(poster.id)) {
-        poster.globalPosition={posX:poster.position.posX+this.building.position.posX,posY:poster.position.posY+this.building.position.posY-11.5}
+      if(poster.floor == floorNum && poster.location === this.building.id) {
         this.posterArr.push(poster)
       }
     });
