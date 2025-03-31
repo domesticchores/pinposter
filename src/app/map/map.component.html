@@ -31,18 +31,30 @@
     </div>
     <div id="information-container" style="display: none;">
         <button id="info-close-button" (click)="closeMenu()">Close Menu</button>
-        <h2 id="info-name">{{building.name}}</h2>
-        <p>{{building.description}}</p>
-        <hr>
-        <p>Select Floor: </p>
-        <div id="info-floor-selector">
-            <!-- <button (click)="selectFloor(0)"><p>A</p></button> -->
-            <button class="unselected-button" *ngFor="let num of floorNumArr" (click)="selectFloor(num)">{{num}}</button>
+        <div style="display: flex;">
+            <div style="width: 50%;">
+                <h2 id="info-name">{{building.name}}</h2>
+                <p>{{building.description}}</p>
+            </div>
+            <div style="width: 50%; margin-top: 1em;">
+                <p>Select Floor: </p>
+                <div id="info-floor-selector">
+                    <!-- <button (click)="selectFloor(0)"><p>A</p></button> -->
+                    <button class="unselected-button" *ngFor="let num of floorNumArr" (click)="selectFloor(num)">{{num}}</button>
+                </div>
+            </div>
         </div>
         <hr>
-        <h3 style="margin: 10px">Posters Here:</h3>
-        <ul class="poster-list">
-            <li *ngFor="let poster of posterArr">Poster #{{poster.id}}</li>
-        </ul>
+        <div id="poster-list-container">
+            <h3 style="margin: 10px">Posters Here:</h3>
+            <ul class="poster-list">
+                <li *ngFor="let poster of posterArr">Poster #{{poster.id}}</li>
+            </ul>
+        </div>
+        <div id="poster-info-container" style="display: none;">
+            <h1 style="margin: 5px;">{{poster.location}}#{{poster.id}}</h1>
+            <p style="margin: 10px;">{{poster.description}}</p>
+            <img style="width: 100%; box-sizing: border-box; aspect-ratio: 4/3; background-color: rgb(136, 136, 136);" src="https://placehold.jp/400x300.png">
+        </div>
     </div>
 </div>

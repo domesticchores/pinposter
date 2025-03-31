@@ -71,7 +71,7 @@
 }
 
 #info-floor-selector button {
-  width: 10%;
+  width: 30%;
   aspect-ratio: 1/1;
 }
 
@@ -108,4 +108,8 @@
   fill: #63ff21;
   stroke-width: 0.1;
   stroke: #ffffff;
+}
+
+#poster-info-container {
+  padding: 10px;
 }

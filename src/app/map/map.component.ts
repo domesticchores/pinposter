@@ -43,6 +43,7 @@ export class MapComponent implements OnInit {
   // current selection with defaults
   building: Building = {"id":"TST","name":"test","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"posters":[0]}
   floor: number = 1;
+  poster: Poster = {"id":1,"floor":1,"description":"test","location":"ABC","position":{posX:0,posY:0}}
 
   constructor(
     // private zoomDirective: ZoomDirective
@@ -93,12 +94,17 @@ export class MapComponent implements OnInit {
     this.openMenu(building);
     const elem: HTMLElement = document.getElementById(building.name)!;
     this.center(building.position, building.name, scale);
+    document.getElementById("poster-list-container")?.setAttribute("style","display: relative");
+    document.getElementById("poster-info-container")?.setAttribute("style","display: none");
 
   }
 
   selectPoster(poster: Poster, scale: number) {
     // some sort of selection
-    this.center(poster.position, "poster#"+poster.id, scale);
+    this.poster = poster;
+    this.center({posX:poster.position.posX-3,posY:poster.position.posY}, "poster#"+poster.id, scale);
+    document.getElementById("poster-list-container")?.setAttribute("style","display: none");
+    document.getElementById("poster-info-container")?.setAttribute("style","display: relative");
   }
 
   center(position: {posX:number,posY:number}, id:string, scale: number) {
@@ -115,7 +121,7 @@ export class MapComponent implements OnInit {
 
     this.zoomDirective.setZoom(scale);
     let bounds = document.getElementById(id)!.getBoundingClientRect();
-    console.log(" object position: ", bounds.x + " " + bounds.y)
+    console.log(" object position: ", bounds.x + " " + bounds.y);
     this.position={
       x: -(bounds.width/2) + (mapWidth/2) - (position.posX/1600)*(1200*this.zoomDirective.getZoom()),
       y: -(bounds.height/2) + (mapHeight/2) - (position.posY/800)*(600*this.zoomDirective.getZoom())
@@ -123,8 +129,8 @@ export class MapComponent implements OnInit {
   }
 
   openMenu(building: Building) {
-    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 60%;")
-    document.getElementById("information-container")?.setAttribute("style","width:40%;")
+    document.getElementsByClassName("constraint-container")[0].setAttribute("style","width: 60%;");
+    document.getElementById("information-container")?.setAttribute("style","width:40%;");
     this.zoomDirective.disableZoom();
     this.building = building;
     // set the number of buttons to the number of floors in building
@@ -144,6 +150,7 @@ export class MapComponent implements OnInit {
     this.zoomDirective.setZoom(1);
     this.position=this.oldPosition;
     this.resetZoom = true;
+    this.posterArr = [];
     this.zoomDirective.enableZoom();
   }
 
