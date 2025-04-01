@@ -1,3 +1,7 @@
+p, h1, h2, h3, h4, h5 {
+  margin: 5px;
+}
+
 .draggable-container {
   position: absolute;
   background-color: #c4c4c4;
@@ -11,7 +15,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #afafaf;
+  background-color: #3a3a3a;
   overflow: hidden;
 }
 
@@ -19,11 +23,11 @@
   fill: black;
   opacity: 0.5;
   stroke-width: 0.1;
-  stroke: red;
+  stroke: orange;
   z-index: 5;
 }
 .building-component:hover {
-  fill: yellowgreen;
+  fill: orange;
   cursor: pointer;
 }
 
@@ -34,12 +38,13 @@
 
 .main-container {
   position: relative;
-  width: 70vw;
-  height: 80vh;
+  width: 80vw;
+  height: auto;
+  aspect-ratio: 2/1;
   border: 1px solid black;
   background-color: #afafaf;
   overflow: hidden;
-  margin: 20px 15vw;
+  margin: 0 auto;
   transition: transform 0.1s ease;
   cursor: grab;
 }
@@ -51,7 +56,7 @@
 #information-container {
   float: right;
   position: relative;
-  background-color: #5a5a5a;
+  background-color: #29262c;
   height: 100%;
   width: 0;
   padding: 10px;
@@ -60,29 +65,51 @@
 
 #info-close-button {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  padding: 5px;
+  right: 5px;
+  top: 5px;
+  line-height: 0;
+  aspect-ratio: 1/1;
+  background-color: red;
+  font-weight: bold;
+  border-radius: 25%;
+  color: whitesmoke;
+  border-color: whitesmoke;
+  border-style: solid;
+  padding: 10px;
+}
+
+#info-close-button:hover {
+  filter: brightness(0.8);
 }
 
 #info-floor-selector {
   display: flex;
   column-gap: 10px;
+  justify-content: center;
 }
 
 #info-floor-selector button {
-  width: 30%;
+  width: 20%;
   aspect-ratio: 1/1;
+  border-radius: 25%;
+  border-style: solid;
+  border-color: whitesmoke;
+}
+
+#info-floor-selector button:hover {
+  filter: brightness(0.8);
 }
 
 .unselected-button {
   border-radius: 5px;
-  background-color: #a2a2a2;
+  background-color: #8f8f8f;
+  color: whitesmoke;
 }
 
 .selected-button {
   border-radius: 5px;
   background-color: #ebebeb;
+  color: black;
 }
 
 .poster-list {
@@ -100,6 +127,10 @@
   background-color: #4d4d4d;
 }
 
+.poster-list li:hover {
+  filter: brightness(0.8);
+}
+
 .poster-pin {
   fill: #ff0000;
 }
@@ -112,4 +143,23 @@
 
 #poster-info-container {
   padding: 10px;
+}
+
+#header-location-image {
+  z-index: 0;
+  filter: brightness(0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  aspect-ratio: 4/3;
+  -webkit-mask-image:-webkit-gradient(linear, center left, center right, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+#info-name {
+  margin-top: 5%;
+  height: 5%;
+  z-index: 10;
+  position: relative;
 }

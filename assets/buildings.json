@@ -6,7 +6,7 @@
         "shape":"m 707.01107,426.93727 h 39.8524 v 5.90406 h 12.17712 v 48.33948 h -50.92251 z",
         "position":{"posX":707,"posY":427},
         "floors":4,
-        "posters":[0,2,3]
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2023-08/building_005_wal.jpg"
     },
     {
         "id":"SHD",
@@ -15,7 +15,7 @@
         "shape":"m 783.32422,419.9375 v 4.32617 h -4.48438 v -3.0664 h -11.69922 v 12.58398 h -7.63085 l 0.22265,52.53711 h -4.44922 l -2.22461,15.90625 c 3.2258,3.33704 8.56641,2.11328 8.56641,2.11328 v 3.11523 l 23.58594,3.33204 c 5.26987,-6.4497 8.25976,-23.91211 8.25976,-23.91211 l 16.04492,-6.44922 c 3.06754,-0.31462 5.26954,12.82031 5.26954,12.82031 6.76431,1.65175 11.24804,-0.78711 11.24804,-0.78711 v -19.11328 h -6.44922 v -7.94336 h -5.90039 v -30.125 l 8.02344,-8.9668 c -1.25848,-4.16869 -4.16797,-5.82031 -4.16797,-5.82031 h -6.21484 c -4.32601,3.06754 -4.01172,5.74219 -4.01172,5.74219 v 14.23633 h -15.41602 c -1.0225,-16.20288 -6.13476,-20.5293 -6.13476,-20.5293 z m 10.55078,28.61133 c 2.707,0.0243 13.71681,0.60387 16.63672,8.29297 0,0 6.11708,22.35789 -17.24219,25.25 v -33.53711 c 0,0 0.21876,-0.009 0.60547,-0.006 z",
         "position":{"posX":752.530,"posY":419.438},
         "floors":3,
-        "posters":[1]
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2021-09/3D%20Ext%20View%20-View%20of%20North%20Entrance%20from%20QM.jpg"
     },
     {
         "id":"GOS",
@@ -24,6 +24,96 @@
         "shape":"m 595.10232,472.2435 h 44.36132 v -7.23624 h 35.39466 v -6.13508 c 0,0 9.12396,-15.25903 19.66371,-0.62923 v 21.86603 c 0,0 3.53947,3.22485 0,6.76432 h -2.51696 v 6.92162 h 3.61812 v 10.06782 h 3.61813 v 7.23624 h 2.35964 v 4.24736 h -8.80934 v -3.77543 h -14.47248 v 2.04502 h -10.69706 v -0.94385 h -3.46081 v 6.13507 h -17.77599 v -6.607 H 633.01394 V 493.16568 H 597.9339 v -5.0339 h -2.91023 z",
         "position":{"posX":594.873,"posY":451.751},
         "floors":3,
-        "posters":[7718]
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2023-08/building_008_gos.jpg"
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"M 575.00602,472.16485 H 508.9753 v 22.02335 h 3.42149 v 3.69678 h 11.68024 v -3.5788 h 7.86548 v 3.65745 h 12.50612 v -3.77543 h 15.25903 v 1.76973 h 13.21401 v -3.3035 h 2.04502 z",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2023-08/building_013_orn.jpg"
+    },
+    {
+        "id":"GOL",
+        "name":"Golisano Hall",
+        "description":"Golisano College of Computing and Information Sciences",
+        "shape":"m 450.05562,480.7564 h 17.35261 v -6.67409 h 6.67408 v -3.55951 h 4.89433 v -3.33704 h -6.22914 v -46.94104 h 6.67408 v -28.47609 h -8.23137 v -8.23137 h 6.89655 v -3.55951 l -2.60203,-0.006 v -19.79359 c 0,0 -16.53034,2.00222 -21.20219,15.12792 h -7.00779 v -1.77976 l -60.2279,0.79089 -0.0564,36.08989 55.20696,0.0139 v 65.2835 h 7.85825 z",
+        "position":{"posX":386.840,"posY":360.009},
+        "floors":3,
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2023-07/building_070_gol.jpg"
+    },
+    {
+        "id":"USC",
+        "name":"University Services Center",
+        "description":"",
+        "shape":"m 444.99219,475.67578 v 11.14258 h -24.63672 v 12.23633 h -2.2793 v 30.97851 h 24.97071 c 0.15232,-0.099 0.28782,-0.19778 0.4375,-0.29687 a 16.96847,16.96847 0 0 1 15.4707,-16.17774 v -15.94921 h -5.67383 l -3.21875,-6.89844 v -15.02539 h -4.10938 z",
+        "position":{"posX":417.926,"posY":475.523},
+        "floors":3,
+        "photo":""
+    },
+    {
+        "id":"SIH",
+        "name":"Student Innovation Hall",
+        "description":"Informally known as \"The Fishbowl\"",
+        "shape":"m 477.37292,530.42273 a 16.96847,16.96847 0 0 1 -16.96847,16.96847 16.96847,16.96847 0 0 1 -16.96847,-16.96847 16.96847,16.96847 0 0 1 16.96847,-16.96847 16.96847,16.96847 0 0 1 16.96847,16.96847 z",
+        "position":{"posX":443.291,"posY":513.309},
+        "floors":1,
+        "photo":""
+    },
+    {
+        "id":"GLE",
+        "name":"Gleason Hall",
+        "description":"Kate Gleason College of Engineering",
+        "shape":"m 560.65151,352.53088 h 27.52919 v -4.56198 h 7.23624 v 46.87827 h 52.69873 v 53.9572 H 593.0573 v 2.51695 H 560.33689 V 414.9828 h -8.02279 v 4.09005 h -5.0339 v 19.03446 h -40.11396 v -19.03446 h -3.46081 v -42.78822 h -2.35965 v -8.49472 h 2.98889 v -7.70817 h 44.99055 v 15.41634 h -2.35964 v 23.91107 h 13.37131 z",
+        "position":{"posX":501.196,"posY":347.819},
+        "floors":1,
+        "photo":"https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/styles/large/public/2023-08/building_009_gle.jpg?itok=s2u2pHq5"
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":""
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":""
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":""
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":""
+    },
+    {
+        "id":"ORN",
+        "name":"Orange Hall",
+        "description":"",
+        "shape":"",
+        "position":{"posX":508.825,"posY":472.015},
+        "floors":1,
+        "photo":""
     }
 ]

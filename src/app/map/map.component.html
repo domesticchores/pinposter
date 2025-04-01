@@ -30,25 +30,32 @@
         </div>
     </div>
     <div id="information-container" style="display: none;">
-        <button id="info-close-button" (click)="closeMenu()">Close Menu</button>
-        <div style="display: flex;">
-            <div style="width: 50%;">
-                <h2 id="info-name">{{building.name}}</h2>
-                <p>{{building.description}}</p>
-            </div>
-            <div style="width: 50%; margin-top: 1em;">
-                <p>Select Floor: </p>
-                <div id="info-floor-selector">
-                    <!-- <button (click)="selectFloor(0)"><p>A</p></button> -->
-                    <button class="unselected-button" *ngFor="let num of floorNumArr" (click)="selectFloor(num)">{{num}}</button>
+        <div style="position: absolute; height: 25%; width: 100%; left:0; top:0; display: flex; overflow: hidden;">
+            <img id="header-location-image" src="" alt="">
+            <div style="display: flex; width: 50%; height: 100%; align-items: center; z-index: 10;">
+                <div>
+                    <h2 style="width: 100%;">{{building.name}}</h2>
+                    <p style="font-size: small;">{{building.description}}</p>
                 </div>
             </div>
+            <div style="position: relative; width: 50%; height: 100%; padding-right: 10px;">
+                <button id="info-close-button" (click)="closeMenu()">✕</button>
+                <div style="position: absolute; bottom: 0; width: 100%; padding-bottom: 7%;">
+                    <h3>Select Floor: </h3>
+                    <div id="info-floor-selector">
+                        <button class="unselected-button" *ngFor="let num of floorNumArr" (click)="selectFloor(num)">{{num}}</button>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; height: 2px; position: absolute; bottom: 3%; left: 0; background-color: whitesmoke;"></div>
         </div>
-        <hr>
+
+        <div style="height: 24%;"></div>
+
         <div id="poster-list-container">
             <h3 style="margin: 10px">Posters Here:</h3>
             <ul class="poster-list">
-                <li *ngFor="let poster of posterArr">Poster #{{poster.id}}</li>
+                <li *ngFor="let poster of posterArr" (click)="selectPoster(poster,10)">Poster #{{poster.id}}</li>
             </ul>
         </div>
         <div id="poster-info-container" style="display: none;">

@@ -53,7 +53,7 @@ export class ZoomDirective {
             this.scale=this.maxZoom;
         }
     }
-    this.renderer.setStyle(this.el.nativeElement, 'transform-origin', "center center");
+    this.renderer.setStyle(this.el.nativeElement, 'transform-origin', `center center`); // update this line for zoom
     this.updateZoom();
   }
   
