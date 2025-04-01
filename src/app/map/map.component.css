@@ -141,10 +141,6 @@ p, h1, h2, h3, h4, h5 {
   stroke: #ffffff;
 }
 
-#poster-info-container {
-  padding: 10px;
-}
-
 #header-location-image {
   z-index: 0;
   filter: brightness(0.8);
