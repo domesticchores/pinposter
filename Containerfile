@@ -1,5 +1,5 @@
 # Import the base image as UBI-Nodejs 18 image
-FROM registry.access.redhat.com/ubi8/nodejs-18:1-71.1695741533
+FROM registry.access.redhat.com/ubi9/nodejs-20:9.5-1743584090
 
 # Set the working directory to /project
 WORKDIR /project
