@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build --prod
 
 ### STAGE 2: Run ###
-FROM nginxinc:latest
+FROM nginx:latest
 
 #### copy nginx conf
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
