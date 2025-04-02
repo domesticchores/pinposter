@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g><g transform="matrix(15.625,0,0,15.625,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="64" height="64"><svg version="1.1" id="svg1" width="64" height="64" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs1"></defs><rect style="fill:#3a3a3a;fill-opacity:1;stroke:#000000;stroke-width:0.3" id="rect1" width="64" height="64" x="0.15000001" y="0.15000001" ry="17.742899"></rect><path id="path5" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.03547" d="M 31.820394,9.1191469 A 14.762311,15.579549 0 0 0 17.055559,24.70141 14.762311,15.579549 0 0 0 23.44713,37.49265 l 8.478229,16.759671 8.616123,-17.029695 a 14.762311,15.579549 0 0 0 5.991281,-11.849462 l 0.07274,-0.138513 h -0.06195 A 14.762311,15.579549 0 0 0 46.574463,24.700713 14.762311,15.579549 0 0 0 31.816215,9.1185279 Z"></path></svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1032)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(12.5,0,0,12.5,100,100)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="64" height="64"><svg version="1.1" id="svg1" width="64" height="64" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs1"><clipPath id="SvgjsClipPath1032"><rect width="1000" height="1000" x="0" y="0" rx="300" ry="300"></rect></clipPath></defs><rect style="fill:#3a3a3a;fill-opacity:1;stroke:#000000;stroke-width:0.293929" id="rect1" width="62.70607" height="62.70607" x="0.64696503" y="0.64696503" ry="17.384182"></rect><path id="path5" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.03547" d="M 31.820394,9.1191469 A 14.762311,15.579549 0 0 0 17.055559,24.70141 14.762311,15.579549 0 0 0 23.44713,37.49265 l 8.478229,16.759671 8.616123,-17.029695 a 14.762311,15.579549 0 0 0 5.991281,-11.849462 l 0.07274,-0.138513 h -0.06195 A 14.762311,15.579549 0 0 0 46.574463,24.700713 14.762311,15.579549 0 0 0 31.816215,9.1185279 Z"></path></svg></svg></g></g></svg></g></svg>
