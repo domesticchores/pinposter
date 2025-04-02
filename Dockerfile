@@ -27,4 +27,4 @@ COPY --from=build /dist/src/app/dist/csh-angular-app/browser /usr/share/nginx/ht
 COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 # Exposing a port, here it means that inside the container 
 # the app will be using Port 80 while running
-EXPOSE 80
+EXPOSE 8080
