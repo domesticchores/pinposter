@@ -132,12 +132,14 @@ p, h1, h2, h3, h4, h5 {
 }
 
 .poster-pin {
-  fill: #ff0000;
+  /* fill: #ff0000; */
+  stroke-width: 0.3;
+  stroke: #000000;
 }
 
 .poster-pin:hover {
   fill: #63ff21;
-  stroke-width: 0.1;
+  stroke-width: 0.3;
   stroke: #ffffff;
 }
 

@@ -2,7 +2,7 @@
     {
         "id":0,
         "floor":1,
-        "description":"",
+        "description":"Talk to the Library Help Desk to request your poster to be hung up.",
         "location":"WAL", 
         "position":{"posX":728.882,"posY":427.436},
         "nextid":7718,
@@ -12,9 +12,49 @@
     {
         "id":7718,
         "floor":1,
-        "description":"Study nook in west Gosnell",
+        "description":"Located in a study nook in west Gosnell.",
         "location":"GOS",
         "position":{"posX":634.221,"posY":496.735},
+        "nextid":7719,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
+    },
+    {
+        "id":7719,
+        "floor":1,
+        "description":"Located halfway up the staircase to second floor.",
+        "location":"GOS",
+        "position":{"posX":647.458,"posY":461.362},
+        "nextid":7720,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
+    },
+    {
+        "id":7720,
+        "floor":2,
+        "description":"Take a right directly after exiting the staircase on floor 2.",
+        "location":"GOS",
+        "position":{"posX":643.565,"posY":459.805},
+        "nextid":7721,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
+    },
+    {
+        "id":7721,
+        "floor":2,
+        "description":"Further down the hall from GOS#7720.",
+        "location":"GOS",
+        "position":{"posX":667.565,"posY":459.805},
+        "nextid":7722,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
+    },
+    {
+        "id":7722,
+        "floor":2,
+        "description":"Next to the water fountain on the wall to the atrium.",
+        "location":"GOS",
+        "position":{"posX":669.567,"posY":468.370},
         "nextid":0,
         "next":{"id":0,"floor":1},
         "previous":{"id":0,"floor":1}

@@ -120,6 +120,16 @@ export class MapComponent implements OnInit, AfterViewInit {
   selectPoster(poster: Poster, scale: number = 10) {
     // some sort of selection
     console.log(poster);
+    let pinElemArr = document.getElementsByClassName("poster-pin");
+    [].forEach.call(pinElemArr, function (pin: SVGAElement) {
+      if(pin.id !== "poster#"+poster.id) {
+        pin.setAttribute("fill","#ff0000");
+        pin.setAttribute("style","z-index: 1;")
+      } else {
+        pin.setAttribute("fill","#ffffff");
+        pin.setAttribute("style","z-index: 5;")
+      }
+    });
     this.poster = poster;
     this.center({posX:poster.position.posX-3,posY:poster.position.posY}, "poster#"+poster.id, scale);
     this.showPosterInfo();
@@ -224,6 +234,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     // if the buildings are not the same, load the building first. has a timeout cause arughghhgh
     if(this.building.id != poster.location) {
       this.select(this.buildingData.find(b => b.id == poster.location)!,5);
+    }
+    if (this.floor != poster.floor) {
+      this.selectFloor(poster.floor)
     }
     setTimeout(() => this.selectPoster(poster), 50)
   }
