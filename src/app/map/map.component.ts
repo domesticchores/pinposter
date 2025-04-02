@@ -20,7 +20,10 @@ interface Poster {
   floor: number,
   description: string,
   location: string,
-  position:{posX:number,posY:number}
+  position:{posX:number,posY:number},
+  nextid: number,
+  next: Poster | undefined,
+  previous: Poster | undefined
 }
 
 // {"id":0,"name":"shed","shape":"stringdata","position":{"posX":0,"posY":0},"posters":[0]}
@@ -43,7 +46,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   // current selection with defaults
   building: Building = {"id":"TST","name":"test","description":"a building","shape":"stringdata","position":{"posX":0,"posY":0},"floors":1,"photo":""}
   floor: number = 1;
-  poster: Poster = {"id":1,"floor":1,"description":"test","location":"ABC","position":{posX:0,posY:0}}
+  poster: Poster = {
+    "id": 1, "floor": 1, "description": "test", "location": "ABC", "position": { posX: 0, posY: 0 }, "nextid": 0,
+    next: undefined,
+    previous: undefined
+  }
 
   constructor(
     // private zoomDirective: ZoomDirective
@@ -65,11 +72,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.posterData = rawData.default;
     this.posterData.forEach(element => {
       element.position.posX+=4;
+      element.next = this.posterData.find(p => p.id == element.nextid)! // this is hacky; seek replacement
+      element.next.previous = element // see above. this seems very efficient and should totally be used in prod
       console.log("poster " + element.id + " loaded");
     });
   }
 
   ngAfterViewInit() {
+    // resize the intial map to fit the viewport completely, done once on page view load
     let boundingMap = document.getElementsByClassName("map-background")[0]!.getBoundingClientRect();
     let boundingContainer = document.getElementById("mapElement")!.getBoundingClientRect();
     this.scaleOffset = boundingContainer.width/boundingMap.width;
@@ -102,14 +112,14 @@ export class MapComponent implements OnInit, AfterViewInit {
   
   select(building: Building, scale: number) {
     this.openMenu(building);
-    const elem: HTMLElement = document.getElementById(building.name)!;
     this.center(building.position, building.name, scale);
     this.showPosterList();
 
   }
 
-  selectPoster(poster: Poster, scale: number) {
+  selectPoster(poster: Poster, scale: number = 10) {
     // some sort of selection
+    console.log(poster);
     this.poster = poster;
     this.center({posX:poster.position.posX-3,posY:poster.position.posY}, "poster#"+poster.id, scale);
     this.showPosterInfo();
@@ -208,5 +218,13 @@ export class MapComponent implements OnInit, AfterViewInit {
   showPosterInfo() {
     document.getElementById("poster-list-container")?.setAttribute("style","display: none");
     document.getElementById("poster-info-container")?.setAttribute("style","display: relative");
+  }
+
+  moveToPoster(poster: Poster) {
+    // if the buildings are not the same, load the building first. has a timeout cause arughghhgh
+    if(this.building.id != poster.location) {
+      this.select(this.buildingData.find(b => b.id == poster.location)!,5);
+    }
+    setTimeout(() => this.selectPoster(poster), 50)
   }
 }

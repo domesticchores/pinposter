@@ -53,13 +53,20 @@
         <div style="height: 24%;"></div>
 
         <div id="poster-list-container">
-            <h3 style="margin: 10px">Posters Here:</h3>
+            <h2>Showing {{building.name}} Floor {{floor}}:</h2>
             <ul class="poster-list">
-                <li *ngFor="let poster of posterArr" (click)="selectPoster(poster,10)">Poster #{{poster.id}}</li>
+                <li *ngFor="let poster of posterArr" (click)="selectPoster(poster)">Poster #{{poster.id}}</li>
             </ul>
         </div>
         <div id="poster-info-container" style="display: none;">
-            <h1>{{poster.location}}#{{poster.id}}</h1>
+            <div style="display: flex; width: 100%;">
+                <h2>{{poster.location}}#{{poster.id}}</h2>
+                <div id="poster-option-buttons">
+                    <button>Mark</button>
+                    <button (click)="moveToPoster(poster.previous!)">Prev</button>
+                    <button (click)="moveToPoster(poster.next!)">Next</button>
+                </div>
+            </div>
             <p style="margin: 5px;">{{poster.description}}</p>
             <img style="width: 100%; box-sizing: border-box; aspect-ratio: 4/3; background-color: rgb(136, 136, 136);" src="/notfound.png">
         </div>

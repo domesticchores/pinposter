@@ -46,8 +46,8 @@
     },
     {
         "id":"USC",
-        "name":"University Services Center",
-        "description":"",
+        "name":"USC",
+        "description":"University Services Center",
         "shape":"m 444.99219,475.67578 v 11.14258 h -24.63672 v 12.23633 h -2.2793 v 30.97851 h 24.97071 c 0.15232,-0.099 0.28782,-0.19778 0.4375,-0.29687 a 16.96847,16.96847 0 0 1 15.4707,-16.17774 v -15.94921 h -5.67383 l -3.21875,-6.89844 v -15.02539 h -4.10938 z",
         "position":{"posX":417.926,"posY":475.523},
         "floors":3,
@@ -55,8 +55,8 @@
     },
     {
         "id":"SIH",
-        "name":"Student Innovation Hall",
-        "description":"Informally known as \"The Fishbowl\"",
+        "name":"Fishbowl",
+        "description":"Formally known as the Student Innovation Center",
         "shape":"m 477.37292,530.42273 a 16.96847,16.96847 0 0 1 -16.96847,16.96847 16.96847,16.96847 0 0 1 -16.96847,-16.96847 16.96847,16.96847 0 0 1 16.96847,-16.96847 16.96847,16.96847 0 0 1 16.96847,16.96847 z",
         "position":{"posX":443.291,"posY":513.309},
         "floors":1,

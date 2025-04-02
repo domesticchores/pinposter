@@ -4,13 +4,19 @@
         "floor":1,
         "description":"",
         "location":"WAL", 
-        "position":{"posX":728.882,"posY":427.436}
+        "position":{"posX":728.882,"posY":427.436},
+        "nextid":7718,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
     },
     {
         "id":7718,
         "floor":1,
         "description":"Study nook in west Gosnell",
         "location":"GOS",
-        "position":{"posX":634.221,"posY":496.735}
+        "position":{"posX":634.221,"posY":496.735},
+        "nextid":0,
+        "next":{"id":0,"floor":1},
+        "previous":{"id":0,"floor":1}
     }
 ]

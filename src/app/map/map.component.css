@@ -159,3 +159,16 @@ p, h1, h2, h3, h4, h5 {
   z-index: 10;
   position: relative;
 }
+
+#poster-option-buttons {
+  position: absolute;
+  right: 10px;
+  height: 2em;
+  margin-top: 0.5em;
+}
+
+#poster-option-buttons button {
+  height: 2em;
+  aspect-ratio: 2/1;
+  margin: 0 1vw;
+}
